@@ -30,7 +30,7 @@ export class FeedUploadComponent implements OnInit {
   }
 
   setPreviewDataUrl(file: Blob) {
-    const reader  = new FileReader();
+    const reader = new FileReader();
     reader.onloadend = () => {
       this.previewDataUrl = reader.result;
     };
@@ -46,7 +46,6 @@ export class FeedUploadComponent implements OnInit {
     }
     this.file = file[0];
     this.setPreviewDataUrl(this.file);
-
   }
 
   onSubmit($event) {
