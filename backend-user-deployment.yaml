@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-backend-user
+  labels:
+    app: udagram-backend-user
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: udagram-backend-user
+  template:
+    metadata:
+      labels:
+        app: udagram-backend-user
+
+    spec:
+      containers:
+        - name: udagram-api-user
+          image: docker.io/kokose/udagram-api-user:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+            limits:
+              memory: "4048Mi"
+              cpu: "1000m"
+
+          envFrom:
+            - configMapRef:
+                name: env-configmap
+            - secretRef:
+                name: env-secret
+
+          volumeMounts:
+            - mountPath: "/root/.aws/"
+              name: aws-secret
+              readOnly: true
+
+      restartPolicy: Always
+      volumes:
+        - name: aws-secret
+          secret:
+            secretName: aws-secret
+            optional: false
