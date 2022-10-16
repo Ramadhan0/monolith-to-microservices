@@ -5,7 +5,7 @@ metadata:
   labels:
     app: udagram-backend-feed
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: udagram-backend-feed
@@ -19,6 +19,8 @@ spec:
         - name: udagram-api-feed
           image: docker.io/kokose/udagram-api-feed:v1
           imagePullPolicy: Always
+          ports:
+            - containerPort: 80
 
           resources:
             requests:
