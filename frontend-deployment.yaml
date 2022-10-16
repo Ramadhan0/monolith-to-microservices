@@ -5,7 +5,7 @@ metadata:
   labels:
     app: udagram-frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: udagram-frontend
@@ -24,10 +24,16 @@ spec:
           resources:
             requests:
               memory: "128Mi"
-              cpu: "4000m"
+              cpu: "250m"
             limits:
-              memory: "3000Mi"
-              cpu: "6000m"
+              memory: "2048Mi"
+              cpu: "1024m"
+
+          envFrom:
+            - configMapRef:
+                name: env-configmap
+            - secretRef:
+                name: env-secret
 
           volumeMounts:
             - mountPath: "/root/.aws/"

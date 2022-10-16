@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: env-configmap
 data:
-  AWS_BUCKET: udagram675829659117
+  AWS_BUCKET: udagram-bucket-160631146705
   POSTGRES_DB: postgres
-  POSTGRES_HOST: udagram.ceclaelw6pfu.us-east-1.rds.amazonaws.com
+  POSTGRES_HOST: udagram.cihmebxz3yc5.us-east-1.rds.amazonaws.com
